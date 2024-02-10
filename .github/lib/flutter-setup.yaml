@@ -1,0 +1,18 @@
+name: Flutter setup
+
+runs:
+  using: composite
+  steps:
+    - id: get-env
+      shell: bash
+      run: |
+        flutter_version=$( \
+          grep 'flutter' .tool-versions \
+            | sed -E 's/.* ([0-9]+\.[0-9]+\.[0-9]+)\-.*/\1/' \
+        )
+        echo "FLUTTER_VERSION=$flutter_version" >> "$GITHUB_OUTPUT"
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: ${{ steps.get-env.outputs.FLUTTER_VERSION }}
+        channel: "stable"
+        cache: true
