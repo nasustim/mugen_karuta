@@ -11,21 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/lib/flutter-setup.yaml
+      - uses: ./.github/lib/flutter-setup
       - run: flutter pub get
       - run: flutter analyze
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/lib/flutter-setup.yaml
+      - uses: ./.github/lib/flutter-setup
       - run: flutter pub get
       - run: flutter test
   build-ios:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/lib/flutter-setup.yaml
+      - uses: ./.github/lib/flutter-setup
       - run: flutter pub get
       - run: flutter build ios --release --no-codesign
   build-android:
@@ -36,7 +36,7 @@ jobs:
         with:
           distribution: adopt
           java-version: 21
-      - uses: ./.github/lib/flutter-setup.yaml
+      - uses: ./.github/lib/flutter-setup
       - run: flutter pub get
       - run: flutter build apk
       - run: flutter build appbundle
