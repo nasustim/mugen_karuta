@@ -35,7 +35,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: adopt
-          java-version: 21
+          java-version: 11
       - uses: ./.github/lib/flutter-setup
       - run: flutter pub get
       - run: flutter build apk
